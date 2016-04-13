@@ -1,0 +1,8 @@
+mixin catalog-header-controls(data)
+	.catalog-header-controls
+		if !data.photoNotChecked
+			.catalog-header-controls__photo Фото проверено
+		.catalog-header-controls__button
+			a(href="#").button.button_color_green.button_style_rounded.button_size_sm Добавить в  избранное	
+		.catalog-header-controls__caution
+			.controls-caution !

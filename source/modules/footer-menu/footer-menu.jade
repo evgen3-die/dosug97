@@ -1,0 +1,5 @@
+mixin footer-menu(data)
+	.footer-menu
+		each item in data
+			.footer-menu__item
+				a(href= item.url).footer-menu__link= item.title

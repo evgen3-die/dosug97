@@ -1,0 +1,133 @@
+include ../catalog/catalog
+
+mixin product-info(data)
+	.product-info
+		.product-info__left
+			+product-info-stats(data)
+		.product-info__right
+			+product-info-content(data)
+		.clear
+		.product-info__offers
+			+product-offers()
+
+mixin product-info-stats(data)
+	- var salon = false
+	if data.type == "salon"
+		- salon = true
+	.product-info-stats
+		.product-info-stats__main-info
+			+catalog-item-info(catalog.data[0], "product-page", salon)
+		.product-info-stats__content-title
+			+content-title({"title": "Тариф"})
+		.product-info-stats__price
+			+product-info-stats-price(data)
+		if data.type == "girl"
+			.product-info-stats__date
+				+product-info-stats-date()
+			
+
+mixin product-info-stats-price(data)
+	.product-info-stats-price
+		.product-info-stats-price__title.product-info-stats-price__title_building
+			span.product-info-stats-price__text Только аппартаменты
+		.product-info-stats-price__table
+			+catalog-item-time-price()
+		.product-info-stats-price__title.product-info-stats-price__title_auto
+			span.product-info-stats-price__text Выезд
+		.product-info-stats-price__table
+			+catalog-item-time-price()
+		
+		if data.type == "girl"
+			.product-info-stats-price__optional
+				.product-info-stats-optional
+					.product-info-stats-optional__text Анал
+					.product-info-stats-optional__price #[b +#{4000}] #[.rouble]
+					
+mixin product-info-stats-date()
+	.product-info-stats-date
+		.product-info-stats-date__item Дата обновления: #[b 11 мая 2015 09:11]
+		.product-info-stats-date__item Фото проверено: #[b 2 марта 2016 01:35]
+
+mixin product-info-content(data)
+	.product-info-content
+		.product-info-content__title
+			- var title = "Обо мне"
+			if data.type == "salon"
+				- title = "О салоне"
+			+content-title({"title": title, "line": true})
+		.product-info-content__text
+			p Лучше отдыха, чем у нас не может и быть. Сауна в Вашем распоряжении с джакузи. Дополнительные услуги опытных, молодых, красивых и общительных крошек. Расслабляющий массаж, стриптиз с продолжением по желанию каждого индивидуально. Будем рады каждому мужчине =)
+		if data.type != "salon"
+			.product-info-content__title
+				+content-title({"title": "Услуги", "line": true})
+			.product-info-content__tags
+				+product-info-content-tags(tags.data)
+		.product-info-content__title
+			+content-title({"title": "Отзывы", "line": true})
+		.product-info-content__authorization
+			if data.type == "salon"
+				+product-info-content-comment()
+			else	
+				+product-info-content-authorization()
+			
+			
+mixin product-info-content-tags(data)
+	.product-info-content-tags
+		each item in data
+			.product-info-content-tags__title= item.title
+			each tag in item.tags
+				.product-info-content-tags__item= tag.name
+			
+mixin product-info-content-authorization()
+	.product-info-content-authorization
+		.product-info-content-authorization__text Оставлять отзывы могут только авторизированые пользователи
+		.product-info-content-authorization__buttons
+			a(href="#").button.button_color_violet.button_style_rounded.button_size_sm.button_style_bold Зарегистрироваться
+			a(href="#").button.button_color_violet.button_style_rounded.button_size_sm.button_style_bold Авторизироваться	
+			
+mixin product-offers()
+	.product-offers
+		.product-offers__title
+			+content-title({"title": "Другие анкеты рядом"})
+		.product-offers__list
+			+product-offers-list(offers.data)
+
+mixin product-offers-list(data)
+	.product-offers-list
+		each item in data
+			.product-offers-list__item
+				a(href="#").product-offers-list-item
+					.product-offers-list-item__image
+						img(src= item.image, alt= item.name)
+					.product-offers-list-item__bottom
+						.product-offers-list-item__name= item.name
+						.product-offers-list-item__tel= item.tel
+					
+mixin product-info-content-comment()
+	.product-info-content-comment
+		.product-info-content-comment__list
+			+product-info-comment-list(comments.data)
+		.product-info-content-comment__leave
+			+product-info-comment-leave()
+			
+mixin product-info-comment-list(data)
+	.product-info-comment-list
+		each item in data
+			.product-info-comment-list__item
+				+product-info-comment-list-item(item)
+			
+mixin product-info-comment-list-item(data)
+	.product-info-comment-list-item
+		.product-info-comment-list-item__text= data.text
+		.product-info-comment-list-item__bottom
+			a(href="#").product-info-comment-list-item__name= data.name
+			.product-info-comment-list-item__date= data.date	
+			
+mixin product-info-comment-leave()
+	form.product-info-comment-leave
+		.product-info-comment-leave__input
+			+form-item(type="textarea", mod="no-border")
+		.product-info-comment-leave__bottom
+			button(type="submit").button.button_color_violet.button_style_rounded.button_size_sm.button_style_bold Оставить отзыв
+
+			

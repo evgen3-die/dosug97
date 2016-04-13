@@ -1,0 +1,10 @@
+include ../photo-swipe/photo-swipe
+
+mixin product-slider(data)
+	.product-slider(style="opacity: 0; position: absolute;")
+		each item, index in data
+			a(href= item.image).product-slider__item
+				img(src= item.image, alt= "Картинка слайдера " + index)
+	
+			
+	+photo-swipe()

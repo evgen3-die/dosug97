@@ -1,0 +1,18 @@
+extends ../modules/layout/layout
+
+include ../modules/catalog-header/catalog-header
+include ../modules/bread-crumbs/bread-crumbs
+include ../modules/product-slider/product-slider
+include ../modules/product-info/product-info
+
+block content
+	.main-content
+		.main-content__bread-crumbs
+			+bread-crumbs(["Салоны Москвы", "Райские птички"])
+			
+		.main-content__catalog-header.main-content__catalog-header_product-page
+			+catalog-header({"title": "Райские птички", "disableFilters": true, "productPage": true, "photoNotChecked": true})
+		.main-content__product-slider
+			+product-slider(productSlider.data)
+		.main-content__product-info
+			+product-info({ "type": "salon" })

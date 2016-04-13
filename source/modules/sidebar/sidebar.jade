@@ -1,0 +1,10 @@
+include ../small-girls/small-girls
+
+mixin sidebar(data)
+	aside.sidebar
+		.sidebar__section
+			+small-girls(smallGirls.data)
+		a(href="#").sidebar__section.sidebar__section_banner
+			img(src="img/sidebar/banner1.jpg", alt="Баннер")
+		a(href="#").sidebar__section.sidebar__section_banner
+			img(src="img/sidebar/banner2.jpg", alt="Баннер")

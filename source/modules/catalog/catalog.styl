@@ -1,0 +1,256 @@
+.catalog
+	font-size: 0
+	width: 103%
+	&__item
+		display: inline-block
+		font-size: 16px
+		vertical-align: top
+
+	&_tiles
+		margin: -.5% -1.5%
+	&_tiles &__item
+		width: 47%
+		margin: .5% 1.5%
+
+	&_only-photo
+		margin: -1.5%
+	&_only-photo &__item
+		margin: 1.5%
+		width: 30.33%
+
+	&_list
+		margin: -.5% -1.5%
+	&_list &__item
+		margin: .5% 1.5%
+		width: 97%
+
+	&_salons
+		margin: -1.5%
+	&_salons &__item
+		width: 47%
+		margin: 1.5%
+
+.catalog-item
+	&_tiles
+	&_list
+		border: 1px solid transparent
+		padding: 17px
+		&:hover
+			border-color: color18
+			transition .3s $ease-in-quad
+	&__middle
+		margin-top: 9px
+	&__bottom
+		margin-top: 9px
+		&_salons
+			margin-top: 23px
+	&__text
+		margin-top: 13px
+		height: 100px
+		overflow: hidden
+		text-align: justify
+
+.catalog-item-top
+	&__image
+		float: left
+		width: 194px
+		img
+			width: 100%
+			-webkit-backface-visibility: hidden
+			opacity-hover(.87)
+
+	&_list &__image
+		width: 602px
+		font-size: 0
+		img
+			width: 32.2%
+			display: inline-block
+			margin-left: 1.7%
+			&:first-child
+				margin-left: 0
+
+	&__info
+		margin-left: 214px
+
+	&_list &__info
+		margin-left: 622px
+
+.catalog-item-middle
+	//
+
+.catalog-item-parameters
+	width: 100%
+	&__icon
+		display: table-cell
+		vertical-align: middle
+		&:before
+			content: ''
+			display: inline-block
+	&__item
+		display: table-cell
+		vertical-align: middle
+		height: 40px
+		&_camera
+			width: 194px
+			.catalog-item-parameters__icon
+				&:before
+					sprite($camera)
+		&_auto
+			width: 145px
+			.catalog-item-parameters__icon
+				&:before
+					sprite($auto)
+		&_comment
+			color: color11
+			.catalog-item-parameters__icon
+				&:before
+					sprite($comment)
+		&_building
+			padding-right: 10px
+			.catalog-item-parameters__icon
+				&:before
+					sprite($building)
+	&__text
+		display: table-cell
+		vertical-align: middle
+		padding-left: 10px
+		line-height: 17px
+
+.catalog-item-bottom
+	padding: 4px 22px
+	background-image: url(../img/catalog/bottom-pattern.png)
+	&_list &__parameters
+		float: left
+		width: 47%
+	&_list &__time-price
+		float: left
+		width: 53%
+		padding-left: 50px
+		box-sizing border-box
+
+.catalog-item-time-price
+	&__item
+		float: left
+		width: 33.33%
+		&:nth-child(2)
+			text-align: center
+		&:nth-child(3)
+			text-align: right
+	&__item-inner
+		display: inline-block
+		text-align: left
+	&__price
+		b
+			font-size: 18px
+			font-weight: 700
+			color: color15
+			font-style: italic
+
+.catalog-item-info
+	&__name
+		font-size: 22px
+		color: color14
+		line-height: 18px
+		overflow(ellipsis)
+		text-decoration: none
+	&__phone
+		font-size: 22px
+		color: color15
+		overflow(ellipsis)
+		margin-top: 14px
+	&_product-page &__phone
+		margin-top: 0
+	&__metro
+		overflow(whiteend)
+		display: block
+		margin-top: 9px
+		&:before
+			content: ''
+			display: inline-block
+			sprite($metro)
+			margin-right: 8px
+	&__attributes
+		margin-top: 12px
+	&_product-page &__attributes
+		margin-top: 18px
+	&__favorite
+		margin-top: 7px
+	&__address
+		margin-top: 16px
+		margin-bottom: 26px
+		color: color9
+
+.catalog-item-attributes
+	tr
+		border-top: 1px dotted color11
+	td
+		padding: 8px 3px
+		padding-top: 9px
+		&:first-child
+			color: color9
+			white-space: nowrap
+			vertical-align: top
+		&:last-child
+			color: color8
+			text-align: right
+			font-weight: 700
+
+
+.catalog-item-only-photo
+	position: relative
+	&__image
+		display: block
+		opacity-hover(.87)
+		&:after
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 0
+			right: 0
+			height: 169px
+			background: linear-gradient(0deg, #ffffff 0%, rgba(0, 0, 0, 0.99) 1%, rgba(0, 0, 0, 0) 100%);
+		img
+			width: 100%
+			display: block
+			//-webkit-backface-visibility: hidden
+
+	&__price
+		position: absolute
+		top: 0
+		left: 0
+		white-space: nowrap
+		font-size: 18px
+		font-weight: 700
+		color: white
+		font-style: italic
+		padding: 6px 12px
+		padding-right: 20px
+		border-radius: 0 20px 20px 0
+		background-color: rgba(0, 0, 0, 0.5)
+	&__bottom
+		position: absolute
+		left: 0
+		right: 0
+		bottom: 0
+		padding: 15px 18px
+	&__name
+		font-size: 22px
+		color: white
+		margin-bottom: 6px
+		text-decoration: none
+	&__phone
+		font-weight: 700
+		font-size: 20px
+		color: color6
+		margin-bottom: 4px
+	&__metro
+		color: white
+		display: block
+		&:hover
+			color white
+		&:before
+			content: ''
+			display: inline-block
+			sprite($metro_white)
+			margin-right: 8px
+

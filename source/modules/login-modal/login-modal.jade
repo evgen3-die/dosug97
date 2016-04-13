@@ -1,0 +1,15 @@
+include ../modal/modal
+
+mixin login-modal()
+	+modal({"id": "modal1", "close": true})
+		form.login-modal
+			.login-modal__title Вход в кабинет
+			.login-modal__form-item
+				+form-item(type="text", placeholder="E-mail", mod="big")
+			.login-modal__form-item
+				+form-item(type="text", placeholder="Пароль", mod="big")
+			.login-modal__bottom
+				.login-modal__button
+					button(type="submit").button.button_color_violet.button_style_rounded.button_size_lg Войти
+				a(href="#").login-modal__link Восстановить пароль
+				.clear

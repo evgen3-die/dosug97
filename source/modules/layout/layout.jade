@@ -1,0 +1,45 @@
+include ../head/head
+include ../footer/footer
+include ../browsehappy/browsehappy
+include ../header/header
+include ../filters/filters
+include ../sidebar/sidebar
+include ../form-item/form-item
+include ../content-title/content-title
+
+doctype html
+html(class="no-js" lang="ru")
+	
+	block variables
+		
+	- var filterClasses = []
+	if dataPage
+		if dataPage.filterHide
+			- filterClasses.push('page__filters_hide')
+
+	head
+		+head(head.home)
+
+	body.page
+		+browsehappy(browsehappy)
+
+		.page__content
+			.page__header
+				+header(dataPage)
+				
+			.page__filters(class = filterClasses)
+				+filters(dataPage)
+			
+			.page__main
+				.layout.layout_sidebar_right
+					.layout__content
+						block content
+					.layout__sidebar
+						+sidebar()
+
+			.page__footer
+				+footer()
+
+		//- Scripts
+		script(src='js/plugins.min.js')
+		script(src='js/main.min.js')

@@ -1,0 +1,170 @@
+
+html, body
+	height 100%
+
+
+.page
+	// Стили для body
+
+	&__content
+		transition 125ms all ease-in-out
+		background $base-bg-color
+		position relative
+		z-index 2
+
+	&__wrapper
+		min-height 100%
+		margin-bottom -50px
+
+
+	* html &__wrapper
+		height 100%
+
+	&__buffer
+		height 50px
+
+	&__header
+		//
+
+	&__footer {
+
+		border-top 4px solid color19
+	}
+
+	&__main
+		max-width $content-width
+		margin 0 auto
+		padding-bottom: 66px
+		position: relative
+		&:before
+			content: ''
+			position: absolute
+			top: 0
+			bottom: 0
+			left: 50%
+			width: calc(((100vw - 1160px) / 2) + 263px)
+			background-color: color22
+			margin-left: 307px
+			z-index: -1
+			border-left 1px solid color21
+
+	&__bread-crumbs
+		//
+
+	&__mobile-menu
+		background-color #f3f3f3
+		position fixed
+		right 0
+		top 0
+		bottom 0
+		z-index 1
+		width 80%
+		overflow-y auto
+		-webkit-overflow-scrolling touch
+		display none
+
+	&__cover
+		position absolute
+		left 0
+		top 0
+		right 0
+		bottom 0
+		z-index 9999
+		background-color rgba(#000, 0.3)
+		transition 125ms all ease-in-out
+		visibility hidden
+		opacity 0
+
+	&_mmenu-open
+		overflow hidden
+
+	&_mmenu-open &__cover
+		visibility visible
+		opacity 1
+
+	&_mmenu-open &__content
+	&_mmenu-open &__cover
+		left -80%
+
+	&_mmenu-open &__mobile-menu
+		z-index 2
+
+
+.layout
+	m-cf()
+	&__sidebar
+		width 260px
+		+below($content-width)
+			display none
+
+	&__content
+		width 875px
+		+below($content-width)
+			width auto
+			m-padding()
+
+	&_sidebar_left &__sidebar
+		float left
+
+	&_sidebar_left &__content
+		float right
+		+below($content-width)
+			float none
+
+	&_sidebar_right &__sidebar
+		float right
+
+	&_sidebar_right &__content
+		float left
+		+below($content-width)
+			float none
+.video-widget
+	position relative
+	display block
+	height 0
+	padding 0
+	overflow hidden
+
+	&_responsive
+		iframe
+		embed
+		object
+		video
+			position absolute
+			top 0
+			bottom 0
+			left 0
+			width 100%
+			height 100%
+			border 0
+
+	&_16x9
+		padding-bottom 56.25%
+
+	&_4x3
+		padding-bottom 75%
+
+
+.rouble
+	display: inline-block
+	position: relative
+	color: color8
+	&:before
+		content: 'P'
+		font-style: italic
+		font-weight: 700
+		font-size: 18px
+	&:after
+		content: ''
+		position: absolute
+		height: 1px
+		left: 0
+		top: 13px
+		right: 0
+		background: color8
+	&_white
+		color white
+		&:after
+			background: white
+
+

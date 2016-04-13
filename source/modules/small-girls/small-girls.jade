@@ -1,0 +1,13 @@
+mixin small-girls(data)
+	.small-girls
+		each item in data
+			.small-girls__item
+				+small-girls-item(item)
+
+				
+mixin small-girls-item(data)
+	a(href="#").small-girls-item
+		.small-girls-item__image
+			img(src= data.image, alt= data.name)
+		.small-girls-item__name= data.name
+		.small-girls-item__price #[b #{data.price}] #[.rouble]/час

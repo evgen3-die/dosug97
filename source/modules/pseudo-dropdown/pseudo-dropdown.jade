@@ -1,0 +1,56 @@
+include ../services-list/services-list
+
+mixin pseudo-dropdown(data)
+	if (data.type == "checkbox")
+		- var classes = ['pseudo-dropdown_checkbox']
+	if (data.type == "services")
+		- var classes = ['pseudo-dropdown_services']
+	if (data.view == "select")
+		- classes.push('pseudo-dropdown_select')
+	.pseudo-dropdown(class=classes)
+		- var classes = []
+		if (data.view == "select")
+			- classes.push('pseudo-dropdown__top_select')
+		if (data.type == "services")
+			- classes.push('pseudo-dropdown__top_services')
+		.pseudo-dropdown__top(class=classes)
+			if (data.type)
+				if (data.type == "checkbox")
+					.pseudo-dropdown__title= data.title
+					.pseudo-dropdown__trigger-checkbox= data.triggerCheckbox
+				if (data.type == "services")
+					.pseudo-dropdown__trigger-checkbox= data.triggerCheckbox
+			else
+				.pseudo-dropdown__trigger
+		
+		- var classes = []
+		if (data.type)
+			if (data.type == "services")
+				- classes.push('pseudo-dropdown__list_services')
+			if (data.type == "checkbox")
+				- classes.push('pseudo-dropdown__list_checkbox')
+		if (data.view == "select")
+			- classes.push('pseudo-dropdown__list_select')
+		.pseudo-dropdown__list(class=classes)
+			if (data.type == "checkbox")
+				- var classes = ['pseudo-dropdown-list_checkbox']
+			if (data.type == "services")
+				- var classes = ['pseudo-dropdown-list_services']
+			.pseudo-dropdown-list(class=classes)
+				if (data.type == "services")
+					+services-list(servicesList.data)
+				else	
+					ul
+						- var activeCounter = 0
+						each ent, num in data.list
+							- var classes = ['pseudo-dropdown-list__item']
+							if ent.active && activeCounter < 1
+								- activeCounter += 1
+								- classes.push(classes[0] + '_active')
+									
+							if (data.type)
+								if (data.type == "checkbox")
+									li(class=classes, data-value="#{num}")
+										+form-item(type="checkbox", label=ent.title)
+							else
+								li(class=classes, data-value="#{num}")= ent.title

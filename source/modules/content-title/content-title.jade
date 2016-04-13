@@ -1,0 +1,5 @@
+mixin content-title(data)
+	- var classes = []
+	if data.line
+		- classes.push("content-title_line")
+	.content-title(class= classes)= data.title

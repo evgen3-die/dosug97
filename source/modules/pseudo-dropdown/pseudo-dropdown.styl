@@ -1,0 +1,164 @@
+.pseudo-dropdown
+	font-size 13px
+	position relative
+	&__trigger
+		cursor pointer
+		padding 3px 8px
+		display inline-block
+		background #F9F9F9
+		box-shadow 0 1px 5px rgba(22,20,17,.16)
+
+		&:after
+			content ''
+			display inline-block
+			vertical-align middle
+			width 0
+			height 0
+			border 3px solid transparent
+			border-top-color #333
+			margin-left 4px
+			border-bottom none
+	&__list
+		min-width 265px
+		max-width 300px
+
+		position absolute
+		left 0
+		top 100%
+		z-index 101
+		overflow hidden
+		background #fff
+		opacity 0
+		visibility hidden
+		transition all 0.2s ease-in-out 0s
+		border 1px solid color3
+		margin-top: -1px
+		box-sizing border-box
+		&_checkbox
+			left: -19px
+			margin-top: 4px
+		&_select
+			left: 0
+			margin-top: -1px
+			width 100%
+			min-width 0
+			max-width none
+		&_services
+			margin-top: 8px
+			overflow: visible
+			background-color: color12
+			left: -453px
+			max-width: none
+			width: 902px
+			&:before
+				position: absolute
+				top: -6px
+				left: 50%
+				margin-left: 142px
+				width: 10px
+				height: 10px
+				content: ""
+				border: 1px solid #e2e2e2
+				border-right: none
+				border-bottom: none
+				transform: rotate(45deg)
+				background-color: color12
+				transition all 0.2s ease-in-out 0s
+
+	&__top
+		color: white
+		font-size: 16px
+		cursor: pointer
+		position: relative
+		user-select none
+		&:after
+			content: ''
+			position: absolute
+			top: 9px
+			margin-left: 7px
+			left: 100%
+			border: 4px solid transparent
+			border-top: 7px solid white
+		&_select
+			height: 29px
+			padding: 0 28px 0 12px
+			color: #666
+			border: 1px solid #e2e2e2
+			background: #fff
+			text-shadow: 1px 1px #fff
+			font-size: 16px
+			line-height: 29px
+			&:active
+				background #F5F5F5
+				box-shadow inset 1px 1px 3px #DDD
+			&:after
+				top: 42%
+				right: 13px
+				margin-left: 0
+				left: auto
+				border-top-color color10
+			&:hover
+				background #fff - 2%
+			.pseudo-dropdown__trigger-checkbox
+				text-decoration: none
+		&_services
+			&:after
+				content '+'
+				border none
+				top: 0
+				color: color10
+				font-size: 21px
+				right: 11px
+		.header-metro &
+			opacity-hover()
+	&__title
+		color: color2
+		display: inline-block
+	&__trigger-checkbox
+		display: inline-block
+		text-decoration: underline
+		margin-left: 5px
+
+	&_dropdown_open &__list
+		opacity 1
+		visibility visible
+
+	&_select:hover
+		.pseudo-dropdown__top_select:after
+			border-top-color #000
+			color #000
+
+	&_services-checked &__list
+		border-color color20
+		&:before
+			border-color color20
+
+	&_services-checked &__top_select
+		border-color color20
+
+
+		
+
+.pseudo-dropdown-list
+	max-height: 245px
+	margin: 5px 10px
+	overflow hidden
+
+	ul-reset()
+	&_services
+		max-height: none
+		position: relative
+		margin: 15px 25px
+
+
+	&__item
+		padding 5px 12px
+		list-style none
+		//cursor pointer
+	&__item:hover
+	&__item_active
+		/*background #0074D9
+		color #fff*/
+
+	&_checkbox &__item
+		padding: 5px 9px

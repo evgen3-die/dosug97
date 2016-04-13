@@ -1,0 +1,10 @@
+include ../footer-menu/footer-menu
+
+mixin footer(data)
+	footer.footer
+		.footer__inner
+			.footer__menu
+				+footer-menu(mainMenu.default)
+			.footer__button
+				a(href="#").button.button_color_yellow.button_style_rounded.button_size_lg Добавить анкету
+			.clear

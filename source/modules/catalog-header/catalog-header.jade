@@ -1,0 +1,12 @@
+include ../catalog-view/catalog-view
+include ../catalog-header-controls/catalog-header-controls
+
+mixin catalog-header(data)
+	.catalog-header
+		h1.catalog-header__title= data.title
+		if !data.disableFilters
+			.catalog-header__catalog-view
+				+catalog-view()
+		if data.productPage
+			.catalog-header__controls
+				+catalog-header-controls(data)

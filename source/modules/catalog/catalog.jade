@@ -1,0 +1,165 @@
+mixin catalog(data, type)
+	- var classes = []
+	- var length = 8
+	if type
+		- classes.push("catalog_" + type)
+	if type == "only-photo"
+		- length = 12
+	if type == "list"
+		- length = 5	
+	.catalog(class= classes)
+		each item, index in data
+			if index >= length
+				- break;
+			.catalog__item
+				+catalog-item(item, type)
+			
+mixin catalog-item(data, type)
+	- var classes = []
+	if type
+		- classes.push("catalog-item_" + type)
+	.catalog-item(class= classes)
+		if type == "only-photo"
+			.catalog-item__only-photo
+				+catalog-item-only-photo(data)
+		if type == "tiles"	
+			.catalog-item__top
+				+catalog-item-top(data, type)
+			.catalog-item__middle
+				+catalog-item-middle(data)
+			.catalog-item__bottom
+				+catalog-item-bottom()
+		if type == "list"
+			.catalog-item__top
+				+catalog-item-top(data, type)
+			.catalog-item__bottom
+				+catalog-item-bottom(data, type)
+		if type == "salons"
+			.catalog-item__only-photo
+				+catalog-item-only-photo(data)
+			.catalog-item__text
+				+catalog-item-text(data)
+			.catalog-item__bottom.catalog-item__bottom_salons
+				+catalog-item-bottom()
+
+mixin catalog-item-top(data, type)
+	- var classes = []
+	if type
+		- classes.push("catalog-item-top_" + type)
+		
+	.catalog-item-top(class= classes)
+		a(href="#").catalog-item-top__image
+			- var length = 1
+			if type == "list"
+				- length = 3
+			each image, index in data.photos
+				if index >= length
+					- break;
+				img(src= image, alt= data.name)
+		.catalog-item-top__info
+			+catalog-item-info(data)
+		.clear
+
+mixin catalog-item-middle(data)
+	.catalog-item-middle
+		.catalog-item-middle__parameters
+			+catalog-item-parameters(data)
+						
+mixin catalog-item-parameters(data)
+	.catalog-item-parameters
+		.catalog-item-parameters__item.catalog-item-parameters__item_camera
+			if (data.photoChecked)
+				i.catalog-item-parameters__icon
+				.catalog-item-parameters__text Фото проверено
+		if (data.departure)
+			.catalog-item-parameters__item.catalog-item-parameters__item_auto
+				i.catalog-item-parameters__icon
+				.catalog-item-parameters__text Есть выезд
+		else
+			.catalog-item-parameters__item.catalog-item-parameters__item_building
+				i.catalog-item-parameters__icon
+				.catalog-item-parameters__text Только аппартаменты
+		.catalog-item-parameters__item.catalog-item-parameters__item_comment
+			i.catalog-item-parameters__icon
+			.catalog-item-parameters__text (#{data.comments})
+
+mixin catalog-item-bottom(data, type)
+	- var classes = []
+	if type
+		- classes.push("catalog-item-bottom_" + type)
+	.catalog-item-bottom(class= classes)
+		if type == "list"
+			.catalog-item-bottom__parameters
+				+catalog-item-parameters(data)
+			
+		.catalog-item-bottom__time-price
+			+catalog-item-time-price()
+		.clear
+			
+					
+mixin catalog-item-time-price()
+	- var data = [{"time": "1 час", "price": 3000}, {"time": "2 часа", "price": 5000}, {"time": "Ночь", "price": 10000}]
+	.catalog-item-time-price
+		each item in data
+			.catalog-item-time-price__item
+				.catalog-item-time-price__item-inner
+					.catalog-item-time-price__time= item.time
+					.catalog-item-time-price__price #[b #{item.price}] #[.rouble]
+		.clear
+						
+mixin catalog-item-info(data, type, salon)
+	- var classes = []
+	if type
+		- classes.push("catalog-item-info_" + type)
+	.catalog-item-info(class= classes)
+		if type != "product-page"
+			a(href="#").catalog-item-info__name= data.name
+		.catalog-item-info__phone= data.phone
+		a(href="#").catalog-item-info__metro= data.metro
+		if salon
+			.catalog-item-info__address Ул. Лютеранская, 5-В
+		else
+			.catalog-item-info__attributes
+				+catalog-item-attributes(data, type)
+			if type != "product-page"
+				.catalog-item-info__favorite
+					a(href="#").button.button_color_green.button_style_rounded.button_size_sm Добавить в  избранное
+
+mixin catalog-item-attributes(data, type)
+	table.catalog-item-attributes
+		tr
+			td Возраст:
+			td 20
+		tr
+			td Рост:
+			td 168
+		tr
+			td Вес:
+			td 52
+		tr
+			td Грудь:
+			td 5
+		if type == "product-page"
+			tr
+				td Размер одежды:
+				td 44
+			tr
+				td Интимная стрижка:
+				td Полная депиляция
+	
+			
+			
+mixin catalog-item-only-photo(data)
+	.catalog-item-only-photo
+		a(href="#").catalog-item-only-photo__image
+			img(src= data.photos[0], alt= data.name)
+		if data.price
+			.catalog-item-only-photo__price #{data.price} #[.rouble.rouble_white]
+		.catalog-item-only-photo__bottom
+			a(href="#").catalog-item-only-photo__name= data.name
+			.catalog-item-only-photo__phone= data.phone
+			a(href="#").catalog-item-only-photo__metro= data.metro				
+
+			
+mixin catalog-item-text(data)
+	.catalog-item-text= data.text

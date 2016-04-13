@@ -1,0 +1,40 @@
+include ../logo/logo
+include ../main-menu/main-menu
+include ../header-metro/header-metro
+include ../header-login/header-login
+include ../header-liked/header-liked
+
+mixin header(data)
+	header.header
+		- var loginClasses = []
+		if data
+			if data.header == 'signed'
+				- loginClasses.push('header__login_' + data.header)
+			
+					
+		.header__top
+			.header__inner
+				if data
+					if data.header == 'signed'
+						.header__liked
+							+header-liked()
+					
+				.header__logo
+					+logo()
+
+				.header__metro
+					+header-metro()
+					
+				.header__login(class = loginClasses)
+					+header-login(data)
+
+				.clear
+
+		.header__bottom
+			.header__inner
+				.header__menu
+					+main-menu(mainMenu.default)
+				.header__add-profile-button
+					a(href="#").button.button_color_yellow.button_style_rounded.button_size_lg Добавить анкету
+				
+				.clear

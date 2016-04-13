@@ -1,0 +1,226 @@
+.product-info
+	margin-top: 30px
+	&__left
+		float: left
+		width: 284px
+	&__right
+		margin-left: 312px
+	&__offers
+		margin-top: 86px
+
+.product-info-stats
+	&__main-info
+		padding: 14px 17px
+		padding-bottom: 1px
+		border 1px solid color18
+	&__content-title
+		margin-top: 15px
+	&__price
+		margin-top: 15px
+	&__date
+		margin-top: 17px
+
+.product-info-stats-price
+	&__title
+		padding: 9px 18px
+		background-image: url(../img/catalog/bottom-pattern.png)
+		* + &
+			margin-top: 7px
+		&:before
+			display: inline-block
+			content: ''
+			vertical-align: bottom
+		&_building
+			&:before
+				sprite($building)
+				margin-right: 14px
+		&_auto
+			&:before
+				sprite($auto)
+				margin-left: -7px
+				margin-right: 7px
+				margin-bottom: 3px
+	&__table
+		margin-top: 1px
+		padding: 6px 18px
+		background-image: url(../img/catalog/bottom-pattern.png)
+	&__text
+		font-weight: 700
+	&__optional
+		margin-top: 7px
+		background-image: url(../img/catalog/bottom-pattern.png)
+		padding: 13px 18px
+
+.product-info-stats-optional
+	text-align: center
+	&__text
+		display: inline-block
+		margin-right: 25px
+	&__price
+		display: inline-block
+		b
+			font-size: 18px
+			font-weight: 700
+			color: color15
+			font-style: italic
+
+.product-info-stats-date
+	font-size: 14px
+	color: color9
+	&__item
+		& + &
+			margin-top: 6px
+		b
+			color: color8
+
+.product-info-content
+	&__title
+		* + &
+			margin-top: 51px
+	&__text
+		margin-top: 17px
+	&__tags
+		margin-top: 15px
+		margin-left: 6px
+	&__authorization
+		margin-top: 17px
+
+.product-info-content-tags
+	&__title
+		font-size: 18px
+		font-weight: 700
+		margin-bottom: 8px
+		* + &
+			margin-top: 18px
+	&__item
+		color: color9
+		display: inline-block
+		padding: 2px 14px
+		padding-left: 37px
+		background-color: color26
+		background-image: url(../img/product-page/checked.png)
+		background-repeat: no-repeat
+		background-position: 12px center
+		margin: 2px 0
+
+.product-info-content-authorization
+	text-align: center
+	background-image: url(../img/catalog/bottom-pattern.png)
+	padding: 30px 12px
+	&__text
+		width: 100%
+		max-width: 300px
+		margin: 0 auto
+		line-height: 1.4
+	&__buttons
+		margin-top: 25px
+
+.product-offers
+	&__title
+		//
+	&__list
+		margin-top: 24px
+
+.product-offers-list
+	font-size: 0
+	margin: -1%
+	&__item
+		font-size: 16px
+		display: inline-block
+		width: 23%
+		margin: 1%
+
+.product-offers-list-item
+	display: block
+	position: relative
+	text-decoration: none
+	color: white
+	font-weight: 700
+	font-size: 17px
+	opacity-hover(.87)
+	&:hover
+		color: white
+	&__image
+		position: relative
+		&::after
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			bottom: 0
+			height: 127px
+			background: linear-gradient(0deg, #ffffff 0%, rgba(0, 0, 0, 0.99) 1%, rgba(0, 0, 0, 0) 100%)
+		img
+			width: 100%
+			display: block
+	&__bottom
+		position: absolute
+		left: 0
+		right: 0
+		bottom: 0
+		padding: 12px 15px
+	&__tel
+		color: color6
+	&__name
+		margin-bottom: 5px
+
+.product-info-content-comment
+	&__list
+		//
+	&__leave
+		margin-top: 8px
+
+.product-info-comment-list
+	&__item
+		& + &
+			margin-top: 8px
+
+.product-info-comment-list-item
+	padding: 10px
+	padding-left: 65px
+	position: relative
+	background-color: color12
+	&:before
+		content: '‘‘'
+		position: absolute
+		font-size: 87px
+		left: 17px
+		top: 7px
+		line-height: 1
+		color: color27
+	&__bottom
+		position: relative
+		margin-top: 2px
+	&__text
+		//
+	&__name
+		font-size: 14px
+		text-decoration: none
+		color: color25
+		&:before
+			content: ''
+			display: inline-block
+			sprite($user)
+			margin-right: 10px
+			margin-bottom: -2px
+	&__date
+		font-size: 14px
+		position: absolute
+		right: 20px
+		top: 2px
+		&:before
+			content: ''
+			display: inline-block
+			sprite($calendar)
+			margin-right: 10px
+			margin-bottom: -1px
+
+.product-info-comment-leave
+	padding: 10px 15px
+	background-color: color12
+	&__input
+		//
+	&__bottom
+		margin-top: 10px
+		text-align: right
+

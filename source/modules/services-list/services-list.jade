@@ -1,0 +1,10 @@
+mixin services-list(data)
+	.services-list
+		- var columns = [[data[0]], [data[1], data[2]], [data[3], data[4]], [data[5]]]
+		each column in columns
+			.services-list__col
+				each itemBlock in column
+					.services-list__item.services-list__item_title= itemBlock.title
+					each item in itemBlock.items
+						.services-list__item
+							+form-item(type="checkbox", label=item.title)

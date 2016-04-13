@@ -1,0 +1,40 @@
+.catalog-view
+	&__title
+		display: inline-block
+		font-style: italic
+		color: color17
+	&__text
+		display: inline-block
+	&__item
+		&
+		&:visited
+			text-decoration: none
+			color: color11
+			margin-left: 13px
+		&:hover
+		&_active
+		&_active:visited
+			color: color15
+		
+		&:before
+			content: ''
+			display: inline-block
+			margin-right: 2px
+		&_tiles
+			&:before
+				sprite($tiles)
+			&:hover:before
+			&.catalog-view__item_active:before
+				sprite($tiles_active)
+		&_list
+			&:before
+				sprite($list)
+			&:hover:before
+			&.catalog-view__item_active:before
+				sprite($list_active)
+		&_frame
+			&:before
+				sprite($frame)
+			&:hover:before
+			&.catalog-view__item_active:before
+				sprite($frame_active)

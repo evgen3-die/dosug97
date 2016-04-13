@@ -1,0 +1,14 @@
+extends ../modules/layout/layout
+
+include ../modules/catalog-header/catalog-header
+include ../modules/catalog/catalog
+include ../modules/pagination/pagination
+
+block content
+	.main-content
+		.main-content__catalog-header
+			+catalog-header({"title": "Все проститутки Москвы"})
+		.main-content__catalog
+			+catalog(catalog.data, "only-photo")
+		.main-content__pagination
+			+pagination(pagination.defaults)

@@ -1,0 +1,83 @@
+include ../pseudo-dropdown/pseudo-dropdown
+
+mixin filters(data)
+	form.filters
+		.filters__inner
+			.filters__row
+				.filters__item
+					.filters__label Возраст
+					.filters__input.filters__input_small
+						-var data = ["", "18-25", "26-28", "29-32"]
+						+form-item(type="select", name="select", value=data)
+				.filters__item
+					.filters__label Вес
+					.filters__input.filters__input_small
+						-var data = ["", "45-50", "26-28", "29-32"]
+						+form-item(type="select", name="select", value=data)
+					.filters__value
+						i кг
+				.filters__item
+					.filters__label Рост
+					.filters__input.filters__input_small
+						-var data = ["", "170", "171", "172"]
+						+form-item(type="select", name="select", value=data)
+					.filters__value
+						i см
+				.filters__item
+					.filters__label Грудь
+					.filters__input.filters__input_small
+						-var data = ["", "3", "4", "5"]
+						+form-item(type="select", name="select", value=data)
+				.filters__item.filters__item_right
+					.filters__label.filters__label_large #[b Цена:] 1 час
+					.filters__value от	
+					.filters__input.filters__input_small.filters__input_label-large
+						+form-item(type="text", name="name")
+					.filters__value до	
+					.filters__input.filters__input_small.filters__input_label-large
+						+form-item(type="text", name="name")
+					.filters__value
+						.rouble
+						| /час	
+				.clear
+			.filters__row.filters__row_advanced
+				.filters__item
+					.filters__label Интим-стрижка
+					.filters__input.filters__input_large
+						-var data = ["18-25", "26-28", "29-32"]
+						+form-item(type="select", name="select", value=data, placeholder="Выберите")
+				.filters__item
+					.filters__label.filters__label_services Услуги
+					.filters__input.filters__input_services
+						+pseudo-dropdown({
+							"list": headerMetro.data,
+							"type": "services",
+							"triggerCheckbox": "Все услуги",
+							"view": "select"
+						})
+				.filters__item.filters__item_right
+					.filters__label Метро
+					.filters__input.filters__input_large
+						+pseudo-dropdown({
+							"list": headerMetro.data,
+							"type": "checkbox",
+							"triggerCheckbox": "Все станции",
+							"view": "select"
+						})
+				.clear
+			.filters__row
+				.filters__item.filters__item_checkbox
+					+form-item(type="checkbox", label="Фото проверено")
+				.filters__item.filters__item_checkbox
+					+form-item(type="checkbox", label="Есть выезд")
+				.filters__item.filters__item_checkbox
+					+form-item(type="checkbox", label="Есть отзывы")
+				.filters__item.filters__item_right
+					a(href="#").filters__show-button Расширенный поиск
+					a(href="#").filters__hide-button Скрыть расширенный поиск
+					.filters__submit-button
+						button(type="submit").button.button_color_green.button_style_rounded Показать
+				.clear
+			if data
+				p= data.filterHide
+				a(href="#", data-show="Развернуть поиск", data-hide="Скрыть поиск").filters__global-hide-button Развернуть поиск

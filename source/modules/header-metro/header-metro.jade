@@ -1,0 +1,7 @@
+include ../pseudo-dropdown/pseudo-dropdown
+
+mixin header-metro()
+	.header-metro
+		+pseudo-dropdown({"list": headerMetro.data, "type": "checkbox", "title": "Метро:", "triggerCheckbox": "Все станции"})
+
+		

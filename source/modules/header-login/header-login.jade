@@ -1,0 +1,22 @@
+include ../login-modal/login-modal
+
+mixin header-login(data)
+	.header-login
+		if data
+			if data.header == 'signed'
+				a(href="#").header-login__item
+					+icon('user')
+					span.header-login__text Личный кабинет
+				a(href="#", data-remodal-target="modal1").header-login__item
+					+icon('enter')
+					span.header-login__text Выход
+		else	
+			a(href="#").header-login__item
+				+icon('user')
+				span.header-login__text Регистрация
+			a(href="#", data-remodal-target="modal1").header-login__item
+				+icon('enter')
+				span.header-login__text Вход
+	
+	+login-modal()
+		
